@@ -1,2 +1,4 @@
 # choojai_dev
-wuda ecosystem
+## License
+
+[GNU](https://github.com/nueapop/choojai_dev/blob/main/LICENSE)

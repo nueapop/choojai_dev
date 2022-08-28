@@ -2,166 +2,29 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF app</title>
-  <!-- <link rel="stylesheet" href="css/style.css" media="all"> -->
-  <script>
-    document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime() + '" media="all">');
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>Choojai</title>
+    <script src="assets/js/vconsole.min.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
 <body>
-  <p id="os"><b>OS:</b> </p>
-  <p id="language"><b>Language:</b> </p>
-  <p id="version"><b>Version:</b> </p>
-  <p id="isInClient"><b>isInClient:</b> </p>
-  <p id="accessToken"><b>AccessToken:</b> </p>
-  <img id="pictureUrl">
-  <p id="userId"><b>userId:</b> </p>
-  <p id="displayName"><b>displayName:</b> </p>
-  <p id="statusMessage"><b>statusMessage:</b> </p>
-  <p id="decodedIDToken"><b>email:</b> </p>
-  <p id="type"><b>type:</b> </p>
-  <p id="viewType"><b>viewType:</b> </p>
-  <p id="utouId"><b>utouId:</b> </p>
-  <p id="roomId"><b>roomId:</b> </p>
-  <p id="groupId"><b>groupId:</b> </p>
-  <p id="friendship"><b>isFriendship:</b> </p>
-  <p id="scanCode"><b>Code:</b> </p>
-  <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
-  <p id="universalLink1"><b>Universal Link:</b> </p>
-  <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
-  <p><a href="https://nueapop.github.io/choojai_dev/path/?param=9">Link to Path</a></p>
+    <script>
+        var vConsole = new VConsole()
 
-  <button id="btnMsg" onclick="sendMsg()">Send Message</button>
-  <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
-  <button onclick="openWindow()">Open Window</button>
-  <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
-  <button id="btnLogOut" onclick="logOut()">Log Out</button>
-  <button id="btnClose" onclick="closed()">Close</button>
-
-  <script src="js/vconsole.min.js"></script>
-  <script>
-    var vConsole = new VConsole()
-    console.log("Hello World!")
-  </script>
-
-  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-  <script>
-    function createUniversalLink() {
-      const link1 = liff.permanentLink.createUrl()
-      document.getElementById("universalLink1").append(link1)
-
-      liff.permanentLink.setExtraQueryParam('param=9')
-      const link2 = liff.permanentLink.createUrl()
-      document.getElementById("universalLink2").append(link2)
-    }
-
-    async function shareMsg() {
-      await liff.shareTargetPicker([
-        {
-          type: "text",
-          text: "This message was sent by ShareTargetPicker"
+        async function main() {
+            liff.ready.then(() => {
+                if (liff.isLoggedIn()) {
+                } else {
+                    liff.login()
+                }
+            })
+            await liff.init({ liffId: "1657422116-mRbJX4WW" })
         }
-      ])
-    }
-
-    function logOut() {
-      liff.logout()
-      window.location.reload()
-    }
-
-    function closed() {
-      liff.closeWindow()
-    }
-
-    async function scanCode() {
-      const result = await liff.scanCodeV2()
-      document.getElementById("scanCode").append(result.value)
-    }
-
-    function openWindow() {
-      liff.openWindow({
-        url: "https://line.me",
-        external: false
-      })
-    }
-
-    async function getFriendship() {
-      const friend = await liff.getFriendship()
-      document.getElementById("friendship").append(friend.friendFlag)
-      if (!friend.friendFlag) {
-        if (confirm("คุณยังไม่ได้เพิ่ม Bot เป็นเพื่อน จะเพิ่มเลยไหม?")) {
-          window.location = "https://line.me/R/ti/p/@968yyzuc"
-        }
-      }
-    }
-
-    async function sendMsg() {
-      if (liff.getContext().type !== "none") {
-        await liff.sendMessages([
-          {
-            "type": "sticker", // ส่งได้สูงสุด 5 รายการ
-            "stickerId": 1,
-            "packageId": 1
-          }
-        ])
-        alert("Message sent")
-      }
-    }
-
-    function getContext() {
-      if (liff.getContext() != null) {
-        document.getElementById("type").append(liff.getContext().type)// type
-        document.getElementById("viewType").append(liff.getContext().viewType)// เปิดแบบไหน 
-        document.getElementById("utouId").append(liff.getContext().utouId)// ห้องแชทส่วนตัว
-        document.getElementById("roomId").append(liff.getContext().roomId)// ห้องแชทรวม
-        document.getElementById("groupId").append(liff.getContext().groupId)// ห้องแชทกลุ่ม
-      }
-    }
-
-    async function getUserProfile() {
-      const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl // รูปภาพ
-      document.getElementById("userId").append(profile.userId) // รหัสผู้ใช้
-      document.getElementById("statusMessage").append(profile.statusMessage) // ข้อความสถานะ
-      document.getElementById("displayName").append(profile.displayName) // ชื่อผู้ใช้
-      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email) // อนุญาตให้เราเรียกใช้ฟังก์ชัน getDecodedIDToken เพื่อเรียกใช้ข้อมูลที่เก็บไว้ในตัวแปร email
-    }
-
-    function getEnvironment() {
-      document.getElementById("os").append(liff.getOS()) // เช็คว่าเป็นอะไรของระบบปฏิบัติการที่ใช้งานอยู่
-      document.getElementById("language").append(liff.getLanguage()) // เช็คว่าเป็นภาษาใดของระบบปฏิบัติการที่ใช้งานอยู่
-      document.getElementById("version").append(liff.getVersion()) // เช็ค SDK version ที่ใช้งานอยู่
-      document.getElementById("accessToken").append(liff.getAccessToken()) // เช็ค access token ที่ใช้งานอยู่
-      document.getElementById("isInClient").append(liff.isInClient()) // เช็คว่าเปิดผ่านใลน์ไหม
-      if (liff.isInClient()) {
-        document.getElementById("btnLogOut").style.display = "none" // ถ้าเปิดผ่านใลน์ไม่ให้ปุ่ม log out แสดงออก
-      } else {
-        document.getElementById("btnMsg").style.display = "none" // ถ้าไม่เปิดผ่านไลน์ไม่ให้ปุ่ม send message แสดงออก
-        document.getElementById("btnScanCode").style.display = "none" // ถ้าไม่เปิดผ่านไลน์ไม่ให้ปุ่ม scan code แสดงออก
-        document.getElementById("btnClose").style.display = "none" // ถ้าไม่เปิดผ่านไลน์ไม่ให้ปุ่ม close แสดงออก
-      }
-    }
-
-    async function main() {
-      liff.ready.then(() => {
-        document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-        if (liff.isLoggedIn()) {
-          getEnvironment()
-          getUserProfile()
-          getContext()
-          getFriendship()
-          createUniversalLink()
-        } else {
-          liff.login()
-        }
-      })
-      await liff.init({ liffId: "1657422116-mRbJX4WW" })
-    }
-    main()
-  </script>
+        main()
+    </script>
 </body>
 
 </html>
