@@ -16,7 +16,8 @@
 
         async function main() {
             liff.ready.then(() => {
-                if (liff.isLoggedIn({ redirectUri: "https://nueapop.github.io/choojai_dev/views/home.html" })) {
+                if (liff.isLoggedIn()) {
+                    window.location = "https://nueapop.github.io/choojai_dev/views/home.html"
                 } else {
                     liff.login({ redirectUri: "https://nueapop.github.io/choojai_dev/views/home.html" })
                 }
