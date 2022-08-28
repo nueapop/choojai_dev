@@ -72,20 +72,20 @@
 
     function getContext() {
       if (liff.getContext() != null) {
-        document.getElementById("type").append(liff.getContext().type)
-        document.getElementById("viewType").append(liff.getContext().viewType)
-        document.getElementById("utouId").append(liff.getContext().utouId)
-        document.getElementById("roomId").append(liff.getContext().roomId)
-        document.getElementById("groupId").append(liff.getContext().groupId)
+        document.getElementById("type").append(liff.getContext().type)// type
+        document.getElementById("viewType").append(liff.getContext().viewType)// เปิดแบบไหน 
+        document.getElementById("utouId").append(liff.getContext().utouId)// ห้องแชทส่วนตัว
+        document.getElementById("roomId").append(liff.getContext().roomId)// ห้องแชทรวม
+        document.getElementById("groupId").append(liff.getContext().groupId)// ห้องแชทกลุ่ม
       }
     }
 
     async function getUserProfile() {
       const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("userId").append(profile.userId)
-      document.getElementById("statusMessage").append(profile.statusMessage)
-      document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("pictureUrl").src = profile.pictureUrl // รูปภาพ
+      document.getElementById("userId").append(profile.userId) // รหัสผู้ใช้
+      document.getElementById("statusMessage").append(profile.statusMessage) // ข้อความสถานะ
+      document.getElementById("displayName").append(profile.displayName) // ชื่อผู้ใช้
       document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email) // อนุญาตให้เราเรียกใช้ฟังก์ชัน getDecodedIDToken เพื่อเรียกใช้ข้อมูลที่เก็บไว้ในตัวแปร email
     }
 
