@@ -18,7 +18,7 @@
             liff.ready.then(() => {
                 if (liff.isLoggedIn()) {
                 } else {
-                    liff.login()
+                    liff.login({ redirectUri: "https://nueapop.github.io/choojai_dev/views/home.html" })
                 }
             })
             await liff.init({ liffId: "1657422116-mRbJX4WW" })
