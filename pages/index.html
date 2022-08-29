@@ -106,6 +106,7 @@
         const queryString = decodeURIComponent(window.location.search);
         const params = new URLSearchParams(queryString);
         if (params.get("param") == "1") {
+            console.log(params.get("param"))
             document.body.innerHTML = "";
         }
 
