@@ -110,6 +110,15 @@
     if (params.get("category") == "hr") {
         document.body.innerHTML = "";
         $("#dynamicBody").load("category/hr.html");
+    } else if (params.get("category") == "student") {
+        document.body.innerHTML = "";
+        $("#dynamicBody").load("category/student.html");
+    } else if (params.get("category") == "hospital") {
+        document.body.innerHTML = "";
+        $("#dynamicBody").load("category/hospital.html");
+    } else if (params.get("category") == "management") {
+        document.body.innerHTML = "";
+        $("#dynamicBody").load("category/management.html");
     }
 
     var vConsole = new VConsole()
