@@ -98,30 +98,31 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../assets/js/animation-card.js"></script>
-    <script>
-        const queryString = decodeURIComponent(window.location.search);
-        const params = new URLSearchParams(queryString);
-        if (params.get("param") == "1") {
-            document.body.innerHTML = "";
-        }
-
-        var vConsole = new VConsole()
-
-        async function main() {
-            liff.ready.then(() => {
-                if (liff.isLoggedIn()) {
-                } else {
-                    liff.login({ redirectUri: "https://nueapop.github.io/choojai_dev/pages/" })
-                }
-            })
-            await liff.init({ liffId: "1657422116-mRbJX4WW" })
-        }
-        main()
-    </script>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../assets/js/animation-card.js"></script>
+<script>
+    const queryString = decodeURIComponent(window.location.search);
+    const params = new URLSearchParams(queryString);
+    if (params.get("param") == "1") {
+        document.body.innerHTML = "";
+    }
+
+    var vConsole = new VConsole()
+
+    async function main() {
+        liff.ready.then(() => {
+            if (liff.isLoggedIn()) {
+            } else {
+                liff.login({ redirectUri: "https://nueapop.github.io/choojai_dev/pages/" })
+            }
+        })
+        await liff.init({ liffId: "1657422116-mRbJX4WW" })
+    }
+    main()
+</script>
 
 </html>
