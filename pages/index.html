@@ -15,7 +15,7 @@
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
-<body>
+<body id="dynamicBody">
     <div class="row space-rows">
         <div class="col">
             <div class="card cards-shadown cards-hover" data-aos="zoom-out-up" data-aos-duration="500">
@@ -109,6 +109,7 @@
     const params = new URLSearchParams(queryString);
     if (params.get("param") == "1") {
         document.body.innerHTML = "";
+        $("#dynamicBody").load("hr.html");
     }
 
     var vConsole = new VConsole()
