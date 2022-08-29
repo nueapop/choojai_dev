@@ -107,9 +107,9 @@
 <script>
     const queryString = decodeURIComponent(window.location.search);
     const params = new URLSearchParams(queryString);
-    if (params.get("param") == "1") {
+    if (params.get("category") == "hr") {
         document.body.innerHTML = "";
-        $("#dynamicBody").load("hr.html");
+        $("#dynamicBody").load("category/hr.html");
     }
 
     var vConsole = new VConsole()
