@@ -11,21 +11,23 @@
 </head>
 
 <body>
-    <script>
-        var vConsole = new VConsole()
-
-        async function main() {
-            liff.ready.then(() => {
-                if (liff.isLoggedIn()) {
-                    window.location = "/choojai_dev/pages"
-                } else {
-                    liff.login()
-                }
-            })
-            await liff.init({ liffId: "1657422116-mRbJX4WW" })
-        }
-        main()
-    </script>
 </body>
+
+<script src="assets/js/script.js"></script>
+<script>
+    var vConsole = new VConsole()
+
+    async function main() {
+        liff.ready.then(() => {
+            if (liff.isLoggedIn()) {
+                window.location = "/choojai_dev/pages"
+            } else {
+                liff.login()
+            }
+        })
+        await liff.init({ liffId: "1657422116-mRbJX4WW" })
+    }
+    main()
+</script>
 
 </html>
