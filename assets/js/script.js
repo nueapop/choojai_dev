@@ -1,4 +1,8 @@
 function getConfig() {
-    const config = require('../config/config.json');
+    var config = {
+        "liff": {
+            "id": "1657422116-mRbJX4WW"
+        }
+    }
     return config;
 }
