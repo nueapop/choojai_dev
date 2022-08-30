@@ -25,7 +25,8 @@
                 liff.login()
             }
         })
-        await liff.init({ liffId: "1657422116-mRbJX4WW" })
+        const config = getConfig();
+        await liff.init({ liffId: config.liff.id })
     }
     main()
 </script>
