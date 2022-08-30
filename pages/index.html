@@ -106,7 +106,6 @@
 <script src="../assets/js/animation-card.js"></script>
 <script src="../assets/js/script.js"></script>
 <script>
-    getConfig();
     const queryString = decodeURIComponent(window.location.search);
     const params = new URLSearchParams(queryString);
     if (params.get("category") == "hr") {
@@ -132,7 +131,8 @@
                 liff.login({ redirectUri: "https://nueapop.github.io/choojai_dev/pages" })
             }
         })
-        await liff.init({ liffId: "1657422116-mRbJX4WW" })
+        id = getConfig();
+        await liff.init({ liffId: id.liff.id })
     }
     main()
 </script>
