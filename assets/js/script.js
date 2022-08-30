@@ -1,4 +1,4 @@
-async function getConfig() {
-    const { default: json } = await import("../config/config.json", { assert: { type: "json" } });
+function getConfig() {
+    const { default: json } = import("../config/config.json", { assert: { type: "json" } });
     return json;
 }
