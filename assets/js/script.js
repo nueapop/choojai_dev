@@ -1,5 +1,4 @@
-async function getConfigJSON() {
-    const response = await fetch("../assets/config/config.json");
-    const json = await response.json();
-    console.log(json);
+const config = require('../config/config.json');
+function getConfig() {
+    return config;
 }
