@@ -25,7 +25,7 @@
                 liff.login()
             }
         })
-        id = getConfig();
+        const id = getConfig();
         await liff.init({ liffId: id.liff.id })
     }
     main()

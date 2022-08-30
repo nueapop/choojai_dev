@@ -131,7 +131,7 @@
                 liff.login({ redirectUri: "https://nueapop.github.io/choojai_dev/pages" })
             }
         })
-        id = getConfig();
+        const id = getConfig();
         await liff.init({ liffId: id.liff.id })
     }
     main()
