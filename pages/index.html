@@ -106,7 +106,7 @@
 <script src="../assets/js/animation-card.js"></script>
 <script src="../assets/js/script.js"></script>
 <script>
-    const configData = getConfig();
+    var configData = getConfig();
     const queryString = decodeURIComponent(window.location.search);
     const params = new URLSearchParams(queryString);
     if (params.get("category") == "hr") {
