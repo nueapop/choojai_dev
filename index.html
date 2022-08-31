@@ -23,7 +23,8 @@
     async function main() {
         liff.ready.then(() => {
             if (liff.isLoggedIn()) {
-                // window.location = "/choojai_dev/pages"
+                await new Promise(resolve => setTimeout(resolve, 5000));
+                window.location = "/choojai_dev/pages"
             } else {
                 liff.login()
             }
